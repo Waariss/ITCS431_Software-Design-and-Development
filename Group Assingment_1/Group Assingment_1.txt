@@ -1,0 +1,309 @@
+# Gemini-2022
+A Gemini project for ITCS431
+
+# Team Name & Members Group 4
+* 6388014	Waris Damkham
+* 6388041	Chatkawin Phongpawarit
+* 6388087	Chanisara Kotrachai
+
+# Non-functional Requirements
+
+**2.1 System Users**<br>
+- This science plan may include interactive observing.<br>
+
+**2.2 Operational level**<br>
+- The observing level is the “normal” operational mode of the system.<br>
+- Maintenance level permits access to all subsystems for routine maintenance and diagnostic work.<br>
+- Test level operation is used for installation/deinstallation of subsystems, including full diagnostics and installation calibration activities.<br>
+
+**2.3 Access Mode**<br>
+- The observing mode access the system through the sequencer with no direct control of telescope and instruments.<br>
+- Monitoring is a special, read-only case of the observing mode that can be invoked on a subsystem basis.<br>
+- Operation mode is normally available only to the Telescope Operator and the science program sequencer when at operation level.<br>
+- Test access allows full, direct control of any subsystem.<br>
+- All features of the sub- system are available in testing mode.<br>
+- Actual access to the telescope is not permitted in planning mode, but the virtual telescope capability of the Gemini system provides a telescope simulator that is useful for planning observations, as are on-line databases.<br>
+- No control is available in administrative mode, only status and scheduling information is accessible.<br>
+- Under no circumstances should testing affect the performance of an ongoing observation.<br>
+- Under no circumstances should administrative access affect the performance of an ongoing observation.<br>
+
+**2.5 User-Level Requirements**<br>
+- The system offers to a user an interface, which fulfills the various operational requirements in the different modes and offers status information both automatically and on request at any required level.<br>
+- Programs may have the capability of direct control of the telescope.<br>
+- Observing commands will be submitted via the User interface.<br>
+
+**2.71 Interactive observing**<br>
+- The systems must execute the program with the sequencer to improve the Gemini telescope.<br>
+- The system may use interactive operation through the observatory control system.<br>
+- The user interface requires the use of OCS for change to the viewing program.<br>
+- The system can have more than one station in the observation.<br>
+- The system requires interactive observing throughout a full night.<br>
+- All control software must provide support for simulated use within the virtual telescope. <br>
+- The interaction in the system is commonly controlled by an automatic sequencer.<br>
+
+**2.7.2 Queue-based**<br>
+- The system of observation mode will have a queue-based observing feature.<br>
+- During the observation, the observing program must be entirely automated and have low communication with a person.<br>
+- The Gemini software must provide a sufficiently sophisticated programming environment.<br>
+- The simulation usage of the visual telescope must be supported by the control software.<br>
+- The system of software must support the observing program to optimize observing efficiency.<br>
+- The system in scheduling must include software to support flexible scheduling.<br>
+
+**2.7.3 Remote operations**<br>
+- All software should be developed to permit remote operations.<br>
+- Hardware involved in remote operations has been specified with sufficient bandwidth to support remote operations.<br>
+- System shall be totally transparent to local or remote use.<br>
+- System design should minimize the impact of link bandwidth on transparency.<br>
+- Remote operations software be considered from the beginning in the Gemini 8m Telescopes software design.<br>
+- A remote observer might also need a real-time video and voice link with the operator in the control room.<br>
+- Remote access to the Gemini 8m Telescopes and its instruments is required for monitoring and diagnostic purposes.<br>
+
+**2.7.4 Service**<br>
+- The observation service can allow everyone to perform the observation program.<br>
+- The service viewing requires moving between telescope modes and instruments throughout the night.<br>
+- The classical observation necessitates a significant redesign to be afterward modified to the service observing requirement.<br>
+- The observation program may be carried out with little interaction from the client astronomer.<br>
+
+**2.9 General software requirements**<br>
+- The support structure for communicating commands must be reliable, with a uniform ACK/NAK protocol adopted across all systems.<br>
+- Timeouts of communicating commands must be supported at approximately 500 msec.<br>
+- Handshaking of commands between IOCs must occur within 100-200 msec.<br>
+- Peak control information within the system is expected to be 100 TPS.<br>
+- For focusing and related activities, maximum acceptable detector readout time is about 0.1 sec.<br>
+- For mosaicked, large optical detectors, a full readout of the detector must be done in about 2 or 3 minutes.<br>
+- The high-quality transmission must require less than 20 sec.<br>
+
+**2.11 General Performance and Reliability**<br>
+- Gemini software should have no hard restrictions on the number of simultaneous users.<br>
+- Every command must be accepted/rejected within 2 sec and before the corresponding action occurs.<br>
+- Status display update must be within 4 sec at the local stations.<br>
+- Requests of subsystems for status information must be answered within 5 sec and be possible in maintenance level operation.<br>
+
+**2.12 Test and checkout requirements**<br>
+- The telescope and instrument software shall contain built-in test (BIT)<br>
+- Gemini 8m Telescopes software module shall have corresponding test specifications to check normal operation of releases.<br>
+- The Gemini 8m Telescopes control software shall also provide for execution of self-test sequences of the Gemini 8m Telescopes system and subsystems
+- Regression tests should be a part of every Gemini 8m Telescopes software package.<br>
+
+**3.1 Data Specifications.**<br>
+- Control information must be transferred in the form of commands and replies from users, to telescopes, and instruments.<br>
+- Replies might contain status information and data concerning instruments and telescopes might be stored together with the astronomical data.<br>
+- In the control information, no request for information shall produce a delay of control activities or locking.<br>
+- Operational overheads must be kept as low as possible.<br>
+- Intermediate storage of raw data in memory on different nodes and in different formats should be kept to a minimum.<br>
+- There must be at least two copies - one to secure data and one to do assessment of data quality on-line.<br>
+- The link chosen to transfer data should represent as small a bottleneck as possible for data acquisition.<br>
+- Astronomical data will have to be transported between GEMINI and the home institutes of visiting astronomers in FITS format.<br>
+- TV data concerning site monitoring and voice need to be capable of being available at all operations facilities on a permanent connection.<br>
+
+
+**3.2 Operation**<br>
+- The system should have Privilege and Protection to define user operations.<br>
+- At test level, it shall be possible to update all non-protected parameter values.<br>
+- Subdivision within the levels can be achieved by implementing privileges associated with categories of users or with the location of the user station.<br>
+- Protections must also be enforced among users.<br>
+- The system will provide for one auxiliary data acquisition and instrument control nodes, if the test that runs in parallel on instruments does not have the light beam at that moment.<br>
+- The system will provide for a single off-site data acquisition and instrument control node.<br>
+- Every command must be acknowledged in a positive or negative way before the occurrence of the corresponding action within given response times.<br>
+
+**3.3 External Interface Requirements**<br>
+- In Gemini 8m telescopes the user interface always determines how people see the system. <br>
+- A homogeneous user interface should be accomplished by the same user interface tools throughout the project.<br>
+- The software system should encompass all of the telescope's general systems, such as instruments, auxiliary equipment, and data acquisition.<br>
+- The systems require quick-look analysis to use telescope efficiency.<br>
+- The software systems of offline pixel processing should not exist in any interface of Gemini.<br>
+- The subsystems of Gemini should have on-line pixel processing for adaptive optics.<br>
+- The system must avoid the possible duplication of development effort.<br>
+- The system must be compatible with the GEMINI archive requirements.<br>
+- The software must be able to interface with all commercial software packages.<br>
+- The system requires WAN interfaces to eliminate conceptual access problems.<br>
+
+**3.4 General Constraints**<br>
+- Software packages can be reused wherever possible.<br>
+- Software expertise should be consulted wherever possible.<br>
+- Software shall support access to the system from any user station.<br>
+- Software number of the main packages must be kept to a minimum to facilitate maintenance.<br>
+- Gemini 8m telescope software at the two telescopes must be maintained to be identical in the upper layers (even if hardware should differ).<br>
+- Gemini 8m telescope software shall check the consistency of versions of all the various software components.<br>
+- Computer hardware must be able to run the Gemini 8m Telescopes software environment.<br>
+- Systems must have easy procedures to reconfigure when subsystems are modified or removed.  <br>
+- System status parameters will be maintained to an extent that will allow restarting the system and regaining the previous state.<br>
+- Microprocessor software should be hardware independent (allow a later choice of the target microprocessors).<br>
+- The version control system must be available to recover/restore versions at all times. <br>
+- Table-driven software should be used whenever possible, to avoid unnecessary compilations.<br>
+
+**3.5 Attributes**<br>
+- The system can reconfigure itself in order to continue observing.<br>
+- The system should be constantly monitoring active subsystems.<br>
+- All subsystem software includes modules to aid in the maintenance and testing of the subsystem.<br>
+- A system that is operating in Engineering/Maintenance mode must ignore directives from other systems.<br>
+- Subsystems should have a background task running and provide a module for fully exercising all subsystem components.<br>
+- Subsystems should have a background task running whenever that subsystem is operational.<br>
+- Subsystems should provide a module for fully exercising all subsystem components, both hardware and software.<br>
+- All Gemini Software must be designed with human engineering requirements.<br>
+- The Gemini system must be self-monitoring to invoke safety monitoring to prevent risk to people or damage to equipment.<br>
+- Gemini Control System development effort will obey and abide by both the letter and the spirit of all applicable engineering practices, laws, regulations, and policies.<br>
+- Gemini Control System is a reliability program.<br>
+- Software will not allow unsafe actions, detect unsafe areas and halt, and halt if its watchdog has not been reset.<br>
+- Software is to be designed to be easily extended and upgraded with modifications to non-changing components.<br>
+- Software will embody retry procedures in case of error or failure.<br>
+- Software modules for testing the subsystem as an integrated portion of the entire system.<br>
+- System will halt if its watchdog has not been reset.<br>
+- All systems are appropriately interlocked.<br>
+
+**3.6 Life Cycle Aspects**<br>
+- The Telescope Control System should be capable of detecting and invoking the parallel operation.<br>
+
+**3.7 Development environment**<br>
+- Operating systems/languages and tools should support the development model presented.<br>
+- Portability software should target hardware independence.<br>
+
+**3.8 Installation Aspects**<br>
+- The systems must use test procedure methods to test plans at any level in test operation level.<br>
+
+**4.1 Attribute**<br>
+- Module selection should be done in a logical fashion to minimize the size of the interfaces between modules.<br>
+- A measure of fault rates should be done during commissioning to establish baseline rates for system reliability monitoring.<br>
+- During science planning, there should be validity and feasibility checks to help ensure effective and efficient use of the telescope. Where appropriate, these checks should also be performed during operation.<br>
+- The system should be constantly monitoring active subsystems to be sure they are operating correctly before sending commands to each subsystem. This monitoring should continue on inactive subsystems.<br>
+
+**4.2 Other Controls and software Requirements**<br>
+- All telescope and instrument parameters are kept in an online database to permit easy implementation of table-driven applications.<br>
+- The interface between software control packages is normally done via interface calls to the on-line database.<br>
+- All telescope, instrument, and detector control information is to be available at any operation level.<br>
+- Access times to the database are to be in the range of 2-3 msec per access.<br>
+- Asynchronous writes are to be supported, allowing for concurrent operation.<br>
+- Time-access critical information is available in memory.<br>
+- There is to be a consistent and logical (i.e. name based) access method.<br>
+- The database must support both remote access and distributed data.<br>
+- The video data signals must be encoded digitally and transferred via the WAN to remote sites.<br>
+- There must be some form of security to control access to system features.<br>
+- The on-line data store holds astronomical data for the current observation.<br>
+- Astronomical data are automatically stored onto the Archive medium (external software)<br>
+- Star catalogs are available in Astronomical object catalogs (external software)<br>
+- Telescope and instrument parameters are distributed in databases across the IOCs for those systems. There is also a central repository maintained by the OCS that holds these databases for down-loading to the IOCs. (developed software)<br>
+- All additional data that is not required on line (configuration information, detailed documentation, operation logs, etc.) are stored in a relational DBMS. (supported software).<br>
+- Input data are all data that are predefined at operation start. This includes catalogs, calibrations and flat fields.<br>
+- Observing commands (whether entered interactively or via the Sequencer) are input data that provide information on the course of operation and trigger events.<br>
+- Replies to commands, including status information, updates to parameters, video and astronomical information are considered data outputs.<br>
+- All input and output data be logged appropriately.<br>
+- The observation is per- formed through a pre planned program requiring little or no interaction with the observer.<br>
+- Normal operation is possible at all operation levels (observing, maintenance, and test) and applies to the following conditions (where appropriate) on any subsystem.<br>
+- There are start-up and shut-down procedures that must exist at many different levels. Cold start-up, Warm start-up, Telescope start-up, Instrument start-up
+- There must be a way to shut down all subsystems. <br>
+- System logging information should include all important events, properly time- stamped and indexed.<br>
+- It must be possible to log engineering data at up to 200 Hz rates for short periods of time and this data must be available to external software packages for analysis.<br>
+- Long-term logging of engineering data must be possible at slower (1 Hz or less) rates, into a common format (baselined as SYBASE).<br>
+- All errors should be reported using a common, system-wide procedure. <br>
+- There must be well-defined recovery procedures for any subsystem that has become inoperative.<br>
+- Command retries must be included in the system for most common timeouts or no- response conditions.<br>
+- The system should monitor the rate of warning messages. <br>
+- Failure of one subsystem should not affect other, working, subsystems, including communication links.<br>
+- Workstations must match specified software standards and present a well-designed devel- opment environment, including cross-support for VxWorks development, if needed.
+- Workstations are expected to be state-of-the-art systems (CPU, communications support) in a scalable family. This allows the migration of development systems to advancing technology.<br>
+- It is assumed that workstations support Ethernet IEEE-802.3 and FDDI interfaces for communications.<br>
+Internal data formats must be compatible across workstations used for development.<br>
+
+**4.3 User Requirement for EPICS Development**<br>
+- A request can be made to process a record periodically. A number of time intervals are supported.<br>
+- An IOC device driver interrupt routine must be available to accept the external interrupts.<br>
+- A mask can be set to specify value changes, alarm state changes, and/or archive changes.<br>
+
+# Functional Requirements
+
+**2.1 System Users**<br>
+- User is using the Gemini system for the collection of science data.<br>
+
+**2.3 Access Mode**<br>
+- The observing mode must provides simple and safe access to the system for the collec- tion of science data, selection of instrument parameters, and quick-look data reduction.<br>
+- User have access for direct control of the telescope and instruments, typically during observation level operation.<br>
+
+**2.5 User-Level Requirements** <br>
+- All users of the system can access all requirements and modes. <br>
+- Astronomers must be able to enquire about the status of the telescope or any subsystem at any time.<br>
+- Operations staff will be able to enable direct interactive operation.<br>
+- Operations staff will control the Gemini 8m Telescopes indirectly via a scheduler program or directly via commands.<br>
+- Operations staff shall have access to operation tables in update mode.<br>
+
+**2.7.2 Queue-based**<br>
+- An astronomer must be able to validate the observing program's completeness using the system's full telescope simulator.<br>
+- The observatory directorate can sort the queue of individual observations.<br>
+
+
+**2.7.3 Remote operations**<br>
+- Team observing, with multiple observers at different sites should be supported.<br>
+- Staff members have to control a hard wired “stop” button.<br>
+- Staff members have to control a real time video and audio.<br>
+- Staff members have to control the telescope.<br>
+- Users shall be able to observe from a remote site Cerro Tololo.<br>
+- Users shall be able to observe from a remote site Hilo or even home Institutes<br>
+- Users shall normally interact with the system via operators at the Gemini 8m Telescopes control facility.<br>
+- Users shall normally interact with the system via operators at the Gemini 8m Telescopes site facility.<br>
+- Users shall normally interact with the system via operators at the Gemini 8m Telescopes base facility.<br>
+- Users shall normally interact with the system via operators at the Gemini 8m Telescopes remote operations facility.<br>
+- Users shall normally interact with the system via the scheduler program and shall not control any part of the Gemini 8m Telescopes directly.<br>
+
+**2.7.4 Service**<br>
+- The staff can be performing the actual data collection for the astronomer.<br>
+- The staff can use observing programs by using the only executable observing program.<br>
+
+**3.1 Data Specifications**<br>
+- Users can afford to retransmit commands in case of transmission error or collision.<br>
+
+**3.2 Operation**<br>
+- Operations and development staff are able to access parameters at maintenance level<br>
+- One supervisor will monitor the system, and other users might need to monitor the running of observing programs, locally or remotely.<br>
+- Operations staff have privileges to change the environment, meaning selecting a suitable combination of instruments. <br>
+
+**3.3 External Interface Requirements**<br>
+- Software developers can provide quick-look data processing on the Gemini 8m telescopes.<br>
+- Users can access the database of the GEMINI 8m telescope.<br>
+- Support staff can use remote operations on Cerro Tololo or Hilo.<br>
+
+**3.4 General Constraints**<br>
+- Software development and maintenance staff can install/enhance other parts of the system.<br>
+- Support staff might be on Cerro Tololo or in Hilo in the case of remote operations.<br>
+
+**3.7 Development environment**<br>
+- The vendor must be independent with the hardware.<br>
+- Developers should use industrial and defacto standards.<br>
+
+**4.1 Attributes**<br>
+- All of the software must developed by using typical modularization and standardization technique.<br>
+- In each module must defined by its interface to other component, no module could be relied on the information outside the interface.<br>
+- All of the module selection should be implemented in logical fashion to decrease the size of the interface between the module.<br>
+- The online database can be add for this interface, but it must be on accessible by only Reliability and availability.<br>
+- Ensure the effective and efficient use of the telescope by performing validity and feasibility checks during the science planning process, and when necessary, during operation.<br>
+- Before sending commands to each subsystem, the system should constantly monitor both active and inactive subsystems to ensure they are operating correctly.<br>
+
+**4.2 Other Controls and Software Requirements**<br>
+- Ensure that all control information for the telescope, instrument, and detector are accessible to users at any level of operation.<br>
+- Support concurrent operation by enabling asynchronous writes.<br>
+- There is to be a consistent and logical (i.e. name based) access method.<br>
+- Support the gull implementation of remote operations must include This includes remote observing, remote control of telescope, enclosure, and instruments, multipoint monitoring, remote monitoring, remote access for testing, development, diagnostics, and maintenance.<br>
+- Input data are all data that are predefined at operation start including to catalogs, calibrations and flat fields available in archives.<br>
+- Observing commands (whether entered interactively or via the Sequencer) are input data that provide information on the course of operation and trigger events.<br>
+- Replies to commands, including status information, updates to parameters, video and astronomical information are considered data outputs.<br>
+- Operational information, such as logging messages, alarms, and errors are special forms of output data, since they are made available for later inspection and debugging.<br>
+- All input and output data be logged appropriately.<br>
+- Given an initial set of configuration parameters, the Gemini system operates via a sequence of commands. This operation is complemented by using previously stored data, calibrations, and star catalogs.<br>
+- Automatic operation. This is the normal mode of operation. The observation is performed through a preplanned program requiring little or no interaction with the observer.<br>
+- Interactive operation. Science planning and program changes are accomplished through interactive operation. Is is possible to enter interactive operation from automatic operation to handle exceptional conditions.<br>
+- Modes and control. Normal operation is possible at all operation levels (observing, maintenance, and test) and applies to the following conditions (where appropriate) on any subsystem: 1. Observing 2. Stand-by 3. Maintenance and testing.<br>
+- Performance. Overall performance of the Gemini telescope is defined as the percentage of viewable time during which exposures have been taken (i.e. sum of all exposure times over available time for exposures). To improve this performance, all possible concurrencies in system operation should be used. Best use of concurrency occurs when using the Sequencer.<br>
+- Logging<br>
+- Fault-tolerance and recovery.<br>
+- Error logging. All errors should be reported using a common, system-wide procedure.<br>
+- Fatal. Fatal errors occur if there is no acceptable recovery procedure that will allow operation to proceed. Under fatal error conditions, the system falls back to a safe "backup" state requiring human intervention for restart.<br>
+- Serious. Under serious errors, the system does not need to move off-line, but the current operation cannot be completed. Serious errors require human intervention to restart full operation.<br>
+- Warning. All other unexpected conditions result in warnings that are properly logged. The system continues operation, though perhaps with reduced efficiency.<br>
+- All subsystems must group errors into these categories. In addition, errors that result in an "alarm" should be described, along with the proper action required to acknowledge and eliminate the alarm condition.<br>
+- Besides the time-stamp, error logging should provide enough information to trace the condition back to its apparent source, both in equipment and in event sequence.<br>
+- There should be tools available to extract error (and other) logging information by subsystem component, time- sequence, previous events, and so on.<br>
+- The Gemini Control System formally distinguishes alarms from errors. Errors result from failures to successfully complete commands, while alarms represent asynchronous failures. Note that an error may result in an alarm.<br>
+- There are two types of alarm conditions. The first are automatically monitored alarms, which exist as long as the errors persist and are then automatically cleared. The second type of alarm require human acknowledgment to clear.<br>
+- Recovery. In addition to start-up procedures, there must be well-defined recovery procedures for any subsystem that has become inoperative.<br>
+- Command retries must be included in the system for most common timeouts or noresponse conditions. These retries should occur automatically in the command handling to avoid unnecessary error conditions.<br>
+
+**4.3 User Requirement for EPICS Development**<br>
+- A client can communicate with an arbitrary number of servers.<br>
