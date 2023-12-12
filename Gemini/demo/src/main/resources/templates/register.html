@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/register.css">
+</head>
+<body class="h-100">
+<div class="container-fluid h-100">
+    <div class="row no-gutter h-100">
+        <!-- The image half -->
+        <div class="col-md-6 d-none d-md-flex bg-image"></div>
+        <!-- The content half -->
+        <div class="col-md-6 bg-light">
+            <div class="register d-flex align-items-center py-5 h-100">
+                <!-- Demo content-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-xl-7 mx-auto">
+                            <h5 class="display-4 text-center mb-1 mt-2">Gemini System</h5>
+                            <p class="text-muted text-center mb-4">Create a new account</p>
+                            <form action="/register" method="post">
+                                <div class="form-group mb-3">
+                                    <label for="username">Username:</label>
+                                    <input type="text" class="form-control rounded-pill border-0 shadow-sm px-4" id="username" name="username" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="password">Password:</label>
+                                    <input type="password" class="form-control rounded-pill border-0 shadow-sm px-4" id="password" name="password" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control rounded-pill border-0 shadow-sm px-4" id="email" name="email" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="firstName">First Name:</label>
+                                    <input type="text" class="form-control rounded-pill border-0 shadow-sm px-4" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="lastName">Last Name:</label>
+                                    <input type="text" class="form-control rounded-pill border-0 shadow-sm px-4" id="lastName" name="lastName" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="role">Role:</label>
+                                    <select class="form-control rounded-pill border-0 shadow-sm px-4" id="role" name="role" required>
+                                        <option value="Astronomer">Astronomer</option>
+                                        <option value="Administrator">Administrator</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Register</button>
+                                <div class="text-center d-flex justify-content-between mt-4">
+                                    <p>Already have an account? <a href="/" class="link-danger mb-3">Login</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="../static/js/register.js"></script>
+</body>
+</html>
+

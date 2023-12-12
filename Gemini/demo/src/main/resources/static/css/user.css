@@ -1,0 +1,23 @@
+.container {
+    max-width: 800px;
+    margin-top: 20px;
+}
+.form-inline {
+    display: flex;
+    justify-content: center;
+}
+.form-inline button {
+    margin-left: 10px;
+}
+.custom-btn {
+    width: 80px; /* Set the width of the buttons */
+    font-size: 12px; /* Set the font size */
+}
+.rounded-btn {
+    border-radius: 25px; /* Set the border-radius for buttons */
+}
+
+.rounded-input {
+    border-radius: 25px; /* Set the border-radius for form inputs */
+}
+

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users List</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/user.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">GEMINI SYSTEM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container my-4">
+    <h1 class="mb-4 text-center">Users List</h1>
+    <div class="flex-column justify-content-center">
+        <div class="col-lg-8">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.uId}"></td>
+                        <td th:text="${user.firstName}"></td>
+                        <td th:text="${user.lastName}"></td>
+                        <td th:text="${user.username}"></td>
+                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.role}"></td>
+                        <td class="text-center">
+                            <button th:attr="data-id=${user.uId}" class="btn btn-sm btn-primary custom-btn update-btn" data-target="#updateUserModal" data-toggle="modal" data-placement="top" title="Edit User"><i class="fas fa-edit"></i>Edit</button>
+                            <button th:onclick="'deleteUser(' + ${user.uId} + ');'" class="btn btn-sm btn-danger custom-btn" data-toggle="tooltip" data-placement="top" title="Delete User"><i class="fas fa-trash"></i>Delete</button>
+                        </td>
+                        <!-- Update User Modal -->
+                        <div class="modal fade" id="updateUserModal" tabindex="-1" role="dialog" aria-labelledby="updateUserModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="updateUserModalLabel">Update User</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="updateUserForm">
+                                            <input type="hidden" id="updateUserId">
+                                            <div class="form-group">
+                                                <label for="updateUsername">Username:</label>
+                                                <input type="text" class="form-control rounded-input" id="updateUsername" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="updatePassword">Password:</label>
+                                                <input type="password" class="form-control rounded-input" id="updatePassword" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="updateEmail">Email:</label>
+                                                <input type="email" class="form-control rounded-input" id="updateEmail" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="updateFirstName">First Name:</label>
+                                                <input type="text" class="form-control rounded-input" id="updateFirstName" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="updateLastName">Last Name:</label>
+                                                <input type="text" class="form-control rounded-input" id="updateLastName" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="updateRole">Role:</label>
+                                                <select class="form-control rounded-input" id="updateRole" required>
+                                                    <option value="Astronomer">Astronomer</option>
+                                                    <option value="Science Observer">Science Observer</option>
+                                                    <option value="Administrator">Administrator</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" th:onclick="'updateUser(' + ${user.uId} + ');'">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-4 col-md-4">
+            <div class="card" style="width: 745px;">
+                <div class="card-body" >
+                    <h2 class="mb-3">Add User</h2>
+                    <form th:action="@{/admin/adduser}" method="post">
+                        <div class="form-group">
+                            <label for="firstName">First Name:</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name:</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Role:</label>
+                            <select class="form-control" id="role" name="role" required>
+                                <option value="Astronomer">Astronomer</option>
+                                <option value="Administrator">Administrator</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add User</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="../static/js/user.js"></script>
+</body>
+</html>

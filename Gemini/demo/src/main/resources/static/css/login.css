@@ -1,0 +1,10 @@
+.login,
+.image {
+    min-height: 100vh;
+}
+
+.bg-image {
+    background-image: url('https://prd-sc101-cdn.rtx.com/-/media/ca/product-assets/marketing/s/space/space-symposium-graphic_1920x1080.jpg?rev=1b9a5443edd64dfc95ed7db4ebf7c74b&w=1600&hash=C263ADE1A4148B32CBC35A9CBDA8E889');
+    background-size: cover;
+    background-position: center left;
+}

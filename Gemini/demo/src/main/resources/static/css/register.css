@@ -1,0 +1,58 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.container-fluid.h-100 {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.row.no-gutter.h-100 {
+    height: 100%;
+    margin: 0;
+}
+
+.col-md-6 {
+    padding: 0;
+    height: 100%;
+}
+
+.register,
+.image {
+    height: 100%;
+}
+
+.bg-image {
+    background-image: url('https://media.wired.com/photos/59266745af95806129f4f572/master/w_2560%2Cc_limit/HETStarTrailsTA.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    border-width: 2px;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: none;
+}
+
+.rounded-pill {
+    border-radius: 50px !important;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
