@@ -16,7 +16,7 @@
 - Submit a science plan
 
 ## Updated use case descriptions, activity diagrams, class diagram and sequence diagrams
-https://github.com/ICT-Mahidol/Gemini-2022/tree/master/Gemini-4/design
+https://github.com/Waariss/ITCS431_Software-Design-and-Development/tree/main/Gemini/design
 
 ## Design Pattern
 The design pattern used in this phase is called Singleton because it enables us to ensure that a class has only one instance while providing a global access point to this instance, as in the case of this example, ModelMapper.java, where the ocs is a single instance that is accessible to all clients.
