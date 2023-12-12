@@ -526,7 +526,7 @@ document.querySelector("#planNo1").addEventListener("change", function () {
 
 $("#submitBtn").click(function () {
   const planNo = document.querySelector("#planNo1").value;
-  if (planNo != "") {
+  if (planNo !== "") {
     const testRequestUrl = "/api/science_plan/submit/" + planNo;
     console.log(`Test Request URL: ${testRequestUrl}`);
     // Show the loading message
