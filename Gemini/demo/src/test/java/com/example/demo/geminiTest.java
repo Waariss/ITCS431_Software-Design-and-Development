@@ -57,6 +57,7 @@ public class geminiTest {
         request.setStartDate(String.valueOf(startDate));
         request.setEndDate(String.valueOf(endDate));
 
+
 //        Date startDate = dateFormat.parse("22/02/2021 23:00:00");
 //        Date endDate = dateFormat.parse("23/02/2021 02:00:00");
 
