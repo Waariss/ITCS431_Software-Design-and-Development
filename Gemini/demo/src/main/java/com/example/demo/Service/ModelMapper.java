@@ -51,6 +51,7 @@ public class ModelMapper {
         SP.setObjectives(sciencePlanRequest.getObjectives());
         SP.setStarSystem(CONSTELLATIONS.valueOf(sciencePlanRequest.getStarSystem()));
         SP.setTelescopeLocation(TELESCOPELOC.valueOf(sciencePlanRequest.getTelescopeLocation()));
+        SP.setStatus(SciencePlan.STATUS.valueOf(sciencePlanRequest.getStatus()));
         if (sciencePlanRequest.getDataProcRequirements() != null) {
             SP.setDataProcRequirements(ModelMapper.DataProcRequest(sciencePlanRequest.getDataProcRequirements()));
         }
