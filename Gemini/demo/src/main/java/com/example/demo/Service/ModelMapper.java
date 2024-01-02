@@ -36,7 +36,6 @@ public class ModelMapper {
         DPR.setBlacks(dataProcRequirementRequest.getBlacks());
         DPR.setLuminance(dataProcRequirementRequest.getLuminance());
         DPR.setHue(dataProcRequirementRequest.getHue());
-
         return DPR;
     }
 
